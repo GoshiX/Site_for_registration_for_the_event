@@ -413,15 +413,6 @@ fieldset[disabled] .btn-theme {
 /*------------------------------------------------------------------
   	[Promo Block]
 ------------------------------------------------------------------*/
-.promo-block {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  background: url(../img/1920x1080/01.jpg) no-repeat;
-  background-size: cover;
-  background-position: center center;
-  padding: 250px 0 200px;
-}
 
 .promo-block:before {
   position: absolute;
