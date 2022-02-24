@@ -11,7 +11,12 @@ class HomePageView1(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView1, self).get_context_data(**kwargs)
-        context['settings'] = Description.objects.all()
+        context['description'] = Description.objects.all()
+        return context
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView1, self).get_context_data(**kwargs)
+        context['timetable'] = timetable.objects.all()
         return context
 
 '''
@@ -25,15 +30,5 @@ class HomePageView3(ListView):
     model = guest
     template_name = 'home.html'
     context_object_name = 'guest_info'
-
-class HomePageView4(ListView):
-    model = Description
-    template_name = 'home.html'
-    context_object_name = 'description_info'
-
-class HomePageView5(ListView):
-    context_object_name = 'intro_info'
-    template_name = 'home.html'
-    model = Intro
 
 '''

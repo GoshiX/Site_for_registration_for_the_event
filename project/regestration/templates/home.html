@@ -20,6 +20,8 @@
                 position: relative;
                 z-index: 1;
                 text-align: center;
+                min-height: max-content;
+                height: 100%;
                 background: url({{info.first.bc_img.url}}) no-repeat;
                 background-size: cover;
                 background-position: center center;
@@ -28,15 +30,44 @@
             .intro-timer-block {
                 background-color: {{info.first.block_color}};
             }
+            table {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+                font-size: 14px;
+                min-width: 100%;
+                text-align: left;
+            }
+            th {
+                font-weight: normal;
+                color: rgb(33, 87, 196);
+                border-bottom: solid #6678b1;
+                padding: 10px 8px;
+            }
+            td {
+                color: #669;
+                padding: 9px 8px;
+                transition: .3s linear;
+
+            }
+            tr:hover td {
+                color: #6699ff;
+            }
+            .block {
+                border-radius: 12px;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 9px;
+                padding-bottom: 9px;
+                height: 100%;
+                margin-left: 2%;
+                margin-right: 2%;
+                margin-top: 3%;
+            }
            </style>
     </head>
     <body id="body" data-spy="scroll" data-target=".header">
-        <!--========== HEADER ==========-->
         <header class="header navbar-fixed-top">
-            <!-- Navbar -->
             <nav class="navbar" role="navigation">
                 <div class="container">
-                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse nav-collapse">
                         <div class="menu-container">
                             <ul class="nav navbar-nav navbar-nav-right">
@@ -45,13 +76,9 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- End Navbar Collapse -->
                 </div>
             </nav>
-            <!-- Navbar -->
         </header>
-        <!--========== END HEADER ==========-->
-        <!--========== SLIDER ==========-->
         <div class="promo-block">
             <div class="container">
                 <div class="margin-b-40">
@@ -59,7 +86,8 @@
                     <p class="promo-block-text">{{info.first.days_left}}</p>
                 </div>
             </div>
-            <div class="timer no_margin intro-timer-block" >
+            <!-- Wait releases))))
+            <div class="timer intro-timer-block margin-b-100" >
                 <p class="promo-block-text no_margin">
                     До начала:
                 </p>
@@ -67,22 +95,30 @@
                     dd дней, hh часов
                 </h3>
             </div>
-        </div>
-        <!--========== SLIDER =========-->
-        <!--========== PAGE LAYOUT ==========-->
-        <!-- Products -->
-        <div id="products">
-            <div class="container content-lg">
-                <div class="row text-center margin-b-40">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <h2>{{info.first.subtitle}}</h2>
-                        {% for i in settings %}
-                            <p class="promo-block-text">{{i.text}}</p>
-                        {% endfor %}
-                    </div>
+            -->
+            <div style = "text-align: center">   <!--Container for 3 blocks-->
+                <div class = "block col-sm-11 col-lg-4" id="products" style="background-color: chartreuse;">
+                    <h2>{{info.first.subtitle}}</h2>
+                    {% for i in description %}
+                        <p class="promo-block-text">{{i.text}}</p>
+                    {% endfor %}
                 </div>
-                <!--end row -->
+                <div class = "block col-sm-11 col-lg-4" style = "background-color: rgb(223, 63, 63)">
+                    <table>
+                        <tr><th>День</th><th>Время</th><th>Событие</th></tr>
+                        {% for i in timetable %}
+                            <tr><td>{{i.day}}</td><td>{{i.time}}</td><td>{{i.action}}</td></tr>
+                        {% endfor %}
+    
+                    </table>
+                </div>
+                <div class = "block col-sm-11 col-lg-2" style = "background-color: aqua;">
+                    <p>
+                        
+                    </p>
+                </div>
             </div>
         </div>
+        
     </body>
 </html>
